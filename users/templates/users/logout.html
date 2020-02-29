@@ -1,0 +1,10 @@
+{%extends "users/base_user.html"%}
+
+{%block content%}
+    <div class="content-section">
+        <h3>You are successfully logout {{user.username}}</h3>
+    </div>
+    <div class="border-top pt-3">
+        <a href="{% url 'login' %}">Sign In Again</a>
+    </div>
+{%endblock content%}

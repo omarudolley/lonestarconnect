@@ -1,0 +1,39 @@
+{%extends "forum/base.html"%}
+{% load humanize %}
+
+        {%block title%}
+            {{board.name}} - {{block.super}}
+        {%endblock %}
+        {%block breadcrumb%}
+                <li class="breadcrumb-item"><a href="{% url 'forum-home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'forum-topic' board.pk %}">{{board.name}}</a></li>
+        {%endblock breadcrumb%}
+        {%block content%}
+        <div class= 'mb-4'>
+            <a href="{% url 'forum-new-topic' board.pk %}" class= 'btn btn-primary'>New thread</a>
+        </div>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Threads</th>
+                    <th>Starter</th>
+                    <th>Replies</th>
+                    <th>Views</th>
+                    <th>Last Updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for topics in topic%}
+                <tr>
+                    <td><a href="{% url 'thread_post' board.pk topics.pk  %}">{{topics.title}}</a></td>
+                    <td>{{topics.starter.username}}</td>
+                    <td>{{topics.replies}}</td>
+                    <td>{{topics.views}}</td>
+                    <td>{{topics.last_updated|naturaltime}}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {%include "includes/piginator_fun.html"%}
+{%endblock content%}
