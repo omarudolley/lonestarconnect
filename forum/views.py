@@ -10,7 +10,21 @@ from django.core.paginator import Paginator
 
 def home(request):
     boards = Forum.objects.all()
-    return render(request,'forum/home.html', {'boards':boards})
+    threads = Thread.objects.all().order_by('-last_updated')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(threads, 20)
+
+    try:
+        topics = paginator.page(page)
+    except PageNotAnInteger:
+        # fallback to the first page
+        topics = paginator.page(1)
+    except EmptyPage:
+        # probably the user tried to add a page number
+        # in the url, so we fallback to the last page
+        topics = paginator.page(paginator.num_pages)
+    return render(request,'forum/index.html', {'boards':boards,'topic':topics})
 
 # def topic(request,pk):
 #     try:

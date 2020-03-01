@@ -2,6 +2,7 @@ from django.contrib.auth import login
 from django.shortcuts import render,redirect
 from .forms import SignUpForm, Update_profile, Update_image
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 def register(request):
