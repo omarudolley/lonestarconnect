@@ -3,10 +3,14 @@ from django.contrib.auth.models import User
 from markdown import markdown
 from django.utils.html import mark_safe
 
-
+CATEGORY = [('GEN','General'),
+            ('ENT','Entertaiment'),
+            ('SCI','Science'),
+            ('TEC','Technology'),]
 class Forum(models.Model):
     name = models.CharField(max_length=30, unique=True)
     description = models.CharField(max_length=100)
+    categories = models.CharField(max_length=3, choices = CATEGORY, default='GEN')
     def __str__(self):
         return self.name
 

@@ -12,6 +12,7 @@
         <div class= 'mb-4'>
             <a href="{% url 'forum-new-topic' board.pk %}" class= 'btn btn-primary'>New thread</a>
         </div>
+        <div class="card">
         <table class='table'>
             <thead>
                 <tr>
@@ -35,5 +36,6 @@
                 {% endfor %}
             </tbody>
         </table>
+        </div>
         {%include "includes/piginator_fun.html"%}
 {%endblock content%}

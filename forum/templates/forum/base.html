@@ -13,79 +13,65 @@
 
 
 	<title>{%block title%}LoneStarConnect{%endblock%}</title>
-
+     {%include "includes/header.html"%}
 
 </head>
-<header class="site-header">
-  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-    <div class="container">
-      <a class="navbar-brand mr-4" href="{% url 'forum-home'%}">LoneStarConnect</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarToggle">
-        <div class="navbar-nav mr-auto">
-          <!-- <a class="nav-item nav-link" href="{% url 'forum-home'%}">Home</a> -->
-        </div>
-        <!-- Navbar Right Side -->
-        <div class="navbar-nav">
-            {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'logout'%}">Logout</a>
-                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
 
-            {% else %}
-                <a class="nav-item nav-link" href="{% url 'login'%}">Login</a>
-                <a class="nav-item nav-link" href="{% url 'register'%}">Sign up</a>
-            {% endif %}
-        </div>
-
-        </div>
-    </div>
-  </nav>
-</header>
 <body>
-<main role="main" class="container">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-        <h1 class="display-4">LoneStarConnect</h1>
-        <p class="lead">Welcome to LonestarConnect.</p>
-        </div>
-    </div>
-  <div class="row">
-    <div class="col-md-8">
-        {%if messages%}
-        {%for message in messages%}
-            <div class="alert alert-{{message.tags}}">
-                {{message}}
+
+        <main role="main" class="container main">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">LoneStarConnect</h1>
+                    <p class="lead">Welcome to LonestarConnect.</p>
+                </div>
             </div>
-        {% endfor %}
-        {%endif %}
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-             {% block breadcrumb %}
-             {% endblock %}
-            </ol>
-        </nav>
-      {% block content %}
-      {% endblock %}
-    </div>
+          <div class="row">
+            <div class="col-md-8">
+                {%if messages%}
+                {%for message in messages%}
+                    <div class="alert alert-{{message.tags}}">
+                        {{message}}
+                    </div>
+                {% endfor %}
+                {%endif %}
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                     {% block breadcrumb %}
+                     {% endblock %}
+                    </ol>
+                </nav>
 
-    <div class="col-md-4">
-      <div class="content-section">
-        <h3>Sidebar</h3>
-        <p class='text-muted'>Add any information here you'd like.
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Posts</li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Calendars</li>
-            <li class="list-group-item list-group-item-light">etc</li>
-          </ul>
-        </p>
-      </div>
-    </div>
-  </div>
+                    <form method='GET' class = "mx-2 my-3">
+                    <input class="form-control" type="text" name='q' placeholder="Search" aria-label="Search">
+                    </form>
 
-</main>
+
+              {% block content %}
+              {% endblock %}
+            </div>
+            <div class="col-md-4">
+              <div class="content-section">
+                <h3>Sidebar</h3>
+                <p class='text-muted'>Add any information here you'd like.
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">Latest Posts</li>
+                    <li class="list-group-item list-group-item-light">Announcements</li>
+                    <li class="list-group-item list-group-item-light">Events</li>
+                    <li class="list-group-item list-group-item-light">Trending</li>
+                    <li class="list-group-item list-group-item-light">Twitter</li>
+                    <li class="list-group-item list-group-item-light">Facebook</li>
+                    <li class="list-group-item list-group-item-light">Support</li>
+                    <li class="list-group-item list-group-item-light">Ads</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </main>
+
+    {%include "includes/footer.html"%}
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

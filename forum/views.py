@@ -6,11 +6,17 @@ from .forms import NewTopicForm, TopicReply, UpdateForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def home(request):
+    query = ''
+    if request.GET:
+        query = request.GET.get('q', ' ')
+
+    threads = get_query(query)
+
     boards = Forum.objects.all()
-    threads = Thread.objects.all().order_by('-last_updated')
     page = request.GET.get('page', 1)
 
     paginator = Paginator(threads, 20)
@@ -24,7 +30,7 @@ def home(request):
         # probably the user tried to add a page number
         # in the url, so we fallback to the last page
         topics = paginator.page(paginator.num_pages)
-    return render(request,'forum/index.html', {'boards':boards,'topic':topics})
+    return render(request,'forum/index.html', {'boards':boards,'topic':topics, 'query':query})
 
 # def topic(request,pk):
 #     try:
@@ -117,3 +123,16 @@ def delete_post(request,pk,thread_pk,post_pk):
         return redirect('thread_post',pk=post.thread.forum.pk, thread_pk= post.thread.pk)
     else:
         return render(request, 'forum/post_confirm_delete.html',{'post':post})
+
+
+
+def get_query(query=None,board=None):
+    queryset=[]
+    queries=query.split(' ')
+    for q in queries:
+        topics = Thread.objects.filter(
+        Q(title__icontains=q)
+        ).distinct().order_by('-last_updated')
+        for topic in topics:
+            queryset.append(topic)
+    return list(set(queryset))

@@ -1,0 +1,51 @@
+<main role="main" class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4">LoneStarConnect</h1>
+        <p class="lead">Welcome to LonestarConnect.</p>
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-md-8">
+        {%if messages%}
+        {%for message in messages%}
+            <div class="alert alert-{{message.tags}}">
+                {{message}}
+            </div>
+        {% endfor %}
+        {%endif %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+             {% block breadcrumb %}
+             {% endblock %}
+            </ol>
+        </nav>
+
+            <form class = "mx-2 my-3">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </form>
+
+
+      {% block content %}
+      {% endblock %}
+    </div>
+    <div class="col-md-4">
+      <div class="content-section">
+        <h3>Sidebar</h3>
+        <p class='text-muted'>Add any information here you'd like.
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-light">Latest Posts</li>
+            <li class="list-group-item list-group-item-light">Announcements</li>
+            <li class="list-group-item list-group-item-light">Events</li>
+            <li class="list-group-item list-group-item-light">Trending</li>
+            <li class="list-group-item list-group-item-light">Twitter</li>
+            <li class="list-group-item list-group-item-light">Facebook</li>
+            <li class="list-group-item list-group-item-light">Support</li>
+            <li class="list-group-item list-group-item-light">Ads</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</main>

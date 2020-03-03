@@ -1,8 +1,15 @@
+
 body {
-  background: #fafafa;
+background-image: url('https://whereismap.net/wp-content/uploads/2019/10/Flag-of-Liberia.jpg');
   color: #333333;
-  margin-top: 5rem;
+  margin-top: 10rem;
+
 }
+.main {
+    min-height:100vh;
+    height:100%
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
@@ -15,7 +22,8 @@ ul {
     font-family: 'Pacifico';
 }
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #0074D9;
+  font-family: 'Pacifico';
 }
 
 .site-header .navbar-nav .nav-link {
@@ -83,4 +91,31 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.navbar {
+  min-height: 80px;
+
+}
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
 }

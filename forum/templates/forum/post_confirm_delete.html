@@ -8,7 +8,7 @@
                     <h2>Are you sure you want to delete the post {{post.title}}</h2>
             </fieldset>
                 <button class="btn btn-outline-danger" type= "submit">yes,delete</button>
-                <a href="#" class="btn btn-outline-secondary">Cancel</a>
+                <a href="{% url 'thread_post' post.thread.forum.pk post.thread.pk%}" class="btn btn-outline-secondary">Cancel</a>
             </form>
     </div>
 {%endblock content%}
