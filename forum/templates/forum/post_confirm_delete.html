@@ -1,14 +1,23 @@
 {%extends "forum/base.html"%}
+{%block title%}
+    Edit post
+{%endblock %}
+{%block breadcrumb%}
+        <li class="breadcrumb-item"><a href="{% url 'forum-home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'forum-topic' post.thread.forum.pk %}">{{post.thread.forum.name}}</a></li>
+       <li class="breadcrumb-item"><a href="{% url 'thread_post' post.thread.forum.pk post.thread.pk %}">{{post.thread.title}}</a></li>
+        <li class="breadcrumb-item">{{post.message}}</li>
+{%endblock breadcrumb%}
 {%block content%}
     <div class="content-section">
         <form method="post">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class=border-bottom mb-4">Delete Post</legend>
-                    <h2>Are you sure you want to delete the post {{post.title}}</h2>
+                    <h3>Are you sure you want to delete</h3>
             </fieldset>
-                <button class="btn btn-outline-danger" type= "submit">yes,delete</button>
-                <a href="{% url 'thread_post' post.thread.forum.pk post.thread.pk%}" class="btn btn-outline-secondary">Cancel</a>
+                <button class="btn btn-danger" type= "submit">yes,delete</button>
+                <a href="{% url 'thread_post' post.thread.forum.pk post.thread.pk%}" class="btn btn-secondary">Cancel</a>
             </form>
     </div>
 {%endblock content%}

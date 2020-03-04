@@ -9,7 +9,7 @@
                 <li class="breadcrumb-item"><a href="{% url 'forum-home' %}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{% url 'forum-topic' post.thread.forum.pk %}">{{post.thread.forum.name}}</a></li>
                <li class="breadcrumb-item"><a href="{% url 'thread_post' post.thread.forum.pk post.thread.pk %}">{{post.thread.title}}</a></li>
-                <li class="breadcrumb-item">Edit post</li>
+                <li class="breadcrumb-item">Edit</li>
         {%endblock breadcrumb%}
         {%block content%}
         <div class="jumbotron">
@@ -18,7 +18,7 @@
                     {%csrf_token%}
                     {{form|crispy}}
                 </fieldset>
-             <button type="submit" class="btn btn-primary "> Save changes</button>
+             <button type="submit" class="btn btn-primary"> Save changes</button>
             </form>
             </div>
        {%endblock content%}
