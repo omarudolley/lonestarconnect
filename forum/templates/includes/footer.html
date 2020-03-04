@@ -1,20 +1,35 @@
-<style media="screen">
-    .footer {
-        min-height:100px;
-    }
-</style>
 
-<!-- Footer -->
-<hr>
-<div class = 'card'>
-<footer class=" d-flex flex-row align-items-center footer">
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3 mx-auto">© 2020 Copyright:
-     <br>
-    <a href="{% url 'forum-home' %}"> lonestarconnect.com</a>
+<footer class=" container-fluid pt-4 mt-md-5 pt-md-5 bg-dark text-white border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+
+      <small class="d-block mb-3 text-muted">&copy; 2020</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5 class="text-white">Features</h5>
+      <ul class="list-unstyled text-white-small">
+        <li><a class="text-white-muted" href="#"></a></li>
+
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5 class="text-white">Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-white-muted" href="#"></a></li>
+
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5 class="text-white">About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-white-muted" href="#"></a></li>
+
+      </ul>
+    </div>
   </div>
-  <!-- Copyright -->
-
 </footer>
-<div>
-<!-- Footer -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+{% block javascript %}{% endblock %}

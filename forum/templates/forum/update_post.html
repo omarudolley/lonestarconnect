@@ -12,12 +12,15 @@
                 <li class="breadcrumb-item">Edit post</li>
         {%endblock breadcrumb%}
         {%block content%}
+        <div class="jumbotron">
             <form  method="post" novalidate>
-             {%csrf_token%}
-             {{form|crispy}}
-             <button type="submit" class="btn btn-success"> Save changes</button>
+                <fieldset class="form-group">
+                    {%csrf_token%}
+                    {{form|crispy}}
+                </fieldset>
+             <button type="submit" class="btn btn-primary "> Save changes</button>
             </form>
-
+            </div>
        {%endblock content%}
        {% block javascript %}
           <script src="{% static 'js/simplemde.min.js' %}"></script>
