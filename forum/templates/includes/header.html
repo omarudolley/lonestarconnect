@@ -1,15 +1,18 @@
 
 <div class=" site-header container ">
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-light border-bottom shadow-sm">
-  <a class="my-0 mr-md-auto p-2 text-dark bg-steel " href="{% url 'forum-home' %}">LoneStarInfo</a><a>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">
+  <a class="my-0 mr-md-auto p-2 text-dark bg-steel " href="{% url 'forum-home' %}">LibConnect</a><a>
+
+
   {% if user.is_authenticated %}
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2  text-primary" href="{% url 'profile' %}"> Welcome {{user.username}}</a>
+
+    <a class="p-2  text-white" href="{% url 'profile' %}"> Welcome {{user.username}}</a>
   </nav>
-  <a class="p-2 text-primary" href="{% url 'logout'%}">Logout</a>
+  <a class="p-2 text-white" href="{% url 'logout'%}">Logout</a>
   {% else %}
-  <a class="p-2  text-primary" href="{% url 'profile' %}"> Welcome Guest</a>
-  <a class="p-2 text-primary" href="{% url 'login'%}">Login/Join</a>
+  <a class="p-2  text-white" href="{% url 'profile' %}"> Welcome Guest</a>
+  <a class="p-2 text-white" href="{% url 'login'%}">Login/Join</a>
   {% endif %}
 </div>
 </div>

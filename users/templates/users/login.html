@@ -1,5 +1,8 @@
 {%extends "users/base_user.html"%}
+
 {% load crispy_forms_tags %}
+
+
 {%block content%}
     <div class="content-section">
         <form method="post">
@@ -8,10 +11,12 @@
                 <legend class=border-bottom mb-4">Log In</legend>
                     {{form|crispy}}
             </fieldset>
-                <button class="btn btn-outline-info" type= "submit">Sign In</button>
+                <button class="btn btn-primary" type= "submit">Sign In</button>
+
                 <small class= "text-muted">
                     <a class="ml-2" href="{%url 'password_reset'%}">Forgot your password?</a>
                 </small>
+                <a class="ml-2 btn btn-primary"  href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
         </form>
         <div class="border-top pt-3">
             <small class= "text-muted">Need an Account?<a class="ml-2" href="{%url 'register'%}">Sign Up</a></small>

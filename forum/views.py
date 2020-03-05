@@ -64,7 +64,7 @@ def new_topic(request, pk ):
     board = get_object_or_404(Forum,pk=pk)
 
     if request.method == 'POST':
-        form = NewTopicForm(request.POST)
+        form = NewTopicForm(request.POST, request.FILES)
         if form.is_valid():
             topic = form.save(commit=False)
             topic.forum =board
@@ -72,6 +72,7 @@ def new_topic(request, pk ):
             topic.save()
             post = Post.objects.create(
                 message = form.cleaned_data.get('message'),
+                image= form.cleaned_data.get('image'),
                 thread = topic,
                 created_by = request.user
             )
@@ -92,7 +93,7 @@ def topics_post(request, pk , thread_pk):
 def reply_post(request,pk,thread_pk):
     topic = get_object_or_404(Thread,forum__pk = pk, pk = thread_pk)
     if request.method == 'POST':
-        form = TopicReply(request.POST)
+        form = TopicReply(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit= False)
             post.thread = topic

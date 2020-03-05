@@ -19,7 +19,7 @@
                         <div>
                     </section>
                 </div>
-                <div class="card">
+                <div class="card mb-5">
                     <div class="card-header">
                         <h3 class= "navbar-brand">Topics</h3>
                     </div>
@@ -27,7 +27,7 @@
                         <ul class="list-inline">
                             {% if topic %}
                                 {%for thread in topic%}
-                                <li class="text-center" ><a href="{% url 'thread_post' thread.forum.pk thread.pk  %}">{{thread.title}}</a></li>
+                                <li class="text-center" ><<<a href="{% url 'thread_post' thread.forum.pk thread.pk  %}">{{thread.title}}</a>>></li>
                                 {% endfor %}
                             {%else%}
                                 <li class="text-center text-muted" >There were no results matching your search:{{query}}</a></li>

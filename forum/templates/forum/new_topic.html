@@ -13,7 +13,7 @@
 			{%endblock breadcrumb%}
             {%block content%}
 				<div class="jumbotron">
-	                <form  method="post" novalidate>
+	                <form  method="post" novalidate enctype='multipart/form-data' >
 						<fieldset class="form-group">
 							{%csrf_token%}
 	   	                 	{{form|crispy}}

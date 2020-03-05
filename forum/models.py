@@ -28,6 +28,7 @@ class Thread(models.Model):
     starter = models.ForeignKey(User, on_delete = models.CASCADE,related_name='thread')
     views = models.PositiveIntegerField(default=0)
 
+
     def __str__(self):
         return self.title
 
@@ -42,6 +43,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(null=True)
     created_by = models.ForeignKey(User, on_delete = models.CASCADE,related_name='post')
     updated_by = models.ForeignKey(User, on_delete = models.CASCADE,  null=True,related_name='+')
+    image = models.ImageField(null= True, blank=True, upload_to ='post_pics')
 
     def get_message_as_markdown(self):
         return mark_safe(markdown(self.message, safe_mode='escape'))
